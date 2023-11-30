@@ -156,6 +156,7 @@ main{
       border-radius: 100vmax;
       padding: 0.9rem;
       border: 2px solid $primary;
+      color: $text;
 
       font-size: map-get($font-sizes, x-large);
       font-weight: bold;

@@ -168,11 +168,9 @@ export default class Show extends Show_i{
 
                 if(Main.instance.get_selected_categories.length === 0){
                     Show.instance.clear_all_btn.disabled = true;
-                    console.log(Show.instance.clear_all_btn.disabled, Main.instance.get_selected_categories.length)
                 }
                 else{
                     Show.instance.clear_all_btn.disabled = false;
-                    console.log(Show.instance.clear_all_btn.disabled, Main.instance.get_selected_categories.length)
                 }
             })
 
