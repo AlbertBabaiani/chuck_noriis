@@ -47,7 +47,7 @@ export default class Show extends Show_i{
 
         const p = document.createElement('p')
         p.classList.add('author')
-        p.textContent = 'Made by'
+        p.textContent = 'Created by'
 
         const a = document.createElement('a')
         a.target = "_blank"
