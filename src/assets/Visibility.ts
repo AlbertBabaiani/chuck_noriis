@@ -192,7 +192,6 @@ export default class Show extends Show_i{
         }
         
         else {
-            this.fitst_time = false
             this.categories_container.innerHTML = ''
 
             const non_selected: string[] = selected_categories ? response.filter( (category: string) => !selected_categories.includes(category) ) : response
@@ -202,6 +201,7 @@ export default class Show extends Show_i{
             }
 
             this.categories_constructor(non_selected)
+            this.fitst_time = false
         }
 
         
