@@ -24,6 +24,9 @@ $font-weights: (
   bold: 700
 );
 
+html{
+  scroll-behavior: smooth;
+}
 
 ::selection{
   background: $primary;
