@@ -161,7 +161,7 @@ main{
       font-weight: bold;
 
       &:hover,
-      &:focus-within{
+      &:focus{
         background: $bg-cl;
       }
     }
