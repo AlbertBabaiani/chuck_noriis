@@ -1,0 +1,372 @@
+$bg-cl: #282a36;
+$primary: #ee5e2a;
+$secondary: #180204;
+$text: #fefaff;
+
+$chuck_norris_font_family: 'Chuck Norris', sans-serif;
+
+$font-sizes: (
+  x-small: 0.875rem,       // 14px
+  small: 1rem,            // 16px
+  medium: 1.125rem,       // 18px
+  large: 1.25rem,         // 20px
+  x-large: 1.375rem,      // 22px
+  xx-large: 3rem,
+  xxx-large: 4rem
+);
+
+
+$font-weights: (
+  light: 300,
+  regular: 400,
+  medium: 500,
+  semibold: 600,
+  bold: 700
+);
+
+
+::selection{
+  background: $primary;
+  color: $text;
+}
+
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: $primary;
+}
+
+
+*, *::before, *::after{
+  padding: 0;
+  margin: 0;
+
+  box-sizing: border-box;
+}
+
+*{
+  font-family: 'Poppins', sans-serif;
+}
+
+p{
+  margin-bottom: 0 !important;
+}
+
+:root{
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+
+  line-height: 1.5;
+  font-weight: 400;
+
+  color-scheme: light dark;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
+}
+
+
+
+
+body{
+  background: $bg-cl;
+}
+
+
+#app{
+  max-width: 36rem;
+  width: 96%;
+  margin-inline: auto;
+
+  margin-top: 5vh;
+  margin-top: 5dvh;
+
+  & > *{
+    text-align: center;
+  }
+
+  overflow: hidden;
+}
+
+
+// header
+
+header{
+
+  .chuck-img{
+    aspect-ratio: 1;
+
+    width: 30%;
+    min-width: 8rem;
+  }
+
+
+  .title{
+    color: $text;
+    font-family: $chuck_norris_font_family;
+    // font-size: map-get($font-sizes, xx-large);
+  }
+
+  .author{
+    font-weight: bold;
+    color: $text;
+
+    a{
+      text-decoration: none;
+    }
+  }
+}
+
+// end header
+
+main{
+
+  text-align: start !important;
+  .generate-btn{
+    position: relative;
+
+    &::before{
+      display: none;
+    }
+
+    &.show-loading::before{
+      display: block;
+      user-select: none;
+      pointer-events: none;
+      content: '';
+      height: 90%;
+      aspect-ratio: 1;
+
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      border-radius: 100vmax;
+      border: 0.6rem solid transparent;
+      border-top-color: $text;
+
+      animation: loadingAnimation 1s linear 0s infinite both;
+    }
+
+    button{
+      outline: none;
+      border: none;
+      width: 100%;
+      background: $primary;
+      border-radius: 100vmax;
+      padding: 0.9rem;
+      border: 2px solid $primary;
+
+      font-size: map-get($font-sizes, x-large);
+      font-weight: bold;
+
+      &:hover,
+      &:focus-within{
+        background: $bg-cl;
+      }
+    }
+  }
+
+
+  .category-title{
+    display: flex;
+
+    justify-content: space-between;
+    align-items: center;
+    color: $text
+  }
+
+  .clear_all_button{
+    color: $text;
+    outline: none;
+    border: none;
+    background: transparent;
+    text-align: start;
+    font-size: map-get($font-sizes, x-large);
+    border-radius: 100vmax;
+
+    
+    &:enabled{
+      transition: all 0.3s;
+      cursor: pointer;
+      &:hover,
+      &:focus{
+        color: $primary;
+      }
+    }
+
+    &:disabled{
+      color: #777;
+    }
+  }
+
+
+  // Categoris
+
+
+  
+  .categories-container{
+    // padding-left: 2px;
+    text-align: center;
+
+
+    .category-label{
+      padding: 0.4rem 1.8rem;
+      border: none;
+      border-radius: 100vmax;
+      
+      color: $text;
+      background: $bg-cl;
+      outline: 2px solid $primary;
+      margin: 0 1rem 1rem 0;
+  
+      font-size: map-get($font-sizes, medium);
+      font-weight: 600;
+      text-transform: capitalize;
+  
+      cursor: pointer;
+
+      position: relative;
+      transition: background 0.2s ease;
+
+      opacity: 0;
+      animation: categoriesDelay 0.2s ease-in var(--delay) 1 both alternate;
+
+      &:hover,
+      &:focus{
+        background: $primary;
+      }
+      
+      input[type="checkbox"]{
+        padding: 0.4rem 1.8rem;
+        visibility: hidden;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
+
+      &.selected{
+        background: $primary;
+      }
+
+    }
+
+    
+  }
+  
+  
+
+  // End Categoris
+
+
+
+  // Content
+
+  .content{
+    overflow: hidden;
+    padding: 1.6rem 2rem;
+    color: $text;
+    font-size: map-get($font-sizes , x-large);
+
+    position: relative;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    
+    &::before{
+      content: '';
+      position: absolute;
+      height: 0%;
+      width: 1rem;
+      left: 0;
+      background: $primary;
+      animation: showContentLine 0.2s ease-in-out 0s 1 both alternate;
+
+      z-index: 2;
+    }
+
+    p{
+      z-index: 1;
+      opacity: 0;
+      animation: showContentP 0.3s ease-out 0.2s 1 both alternate;
+
+      &::before,
+      &::after{
+        content: '"';
+      }
+    }
+  }
+
+  // EndContent
+
+
+}
+
+
+// Animations
+
+@keyframes categoriesDelay {
+  from{
+    opacity: 0;
+  }
+  to{
+    opacity: 1;
+  }
+}
+
+@keyframes showContentLine {
+  from{
+    height: 0;
+  }
+  to{
+    height: 100%;
+  }
+}
+
+@keyframes showContentP {
+  from{
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  to{
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes loadingAnimation {
+  from{
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  to{
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
+
+// Animations
+
+
+
+
+
+
+button:focus,
+button:focus-visible {
+  outline: 4px auto -webkit-focus-ring-color;
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    color: #213547;
+    background-color: #ffffff;
+  }
+  a:hover {
+    color: #747bff;
+  }
+  button {
+    background-color: #f9f9f9;
+  }
+}
